@@ -26,6 +26,12 @@ const LayerToggle = () => {
             <br/>
             <button onClick={PoolToggle}>Pooling Layers</button>
             {Pool && <PoolingLayers />}
+            <details>
+                <summary>Normalize</summary>
+                <ul>
+                    <li>BatchNorm</li>
+                </ul>
+            </details>
         </div>
 
        
