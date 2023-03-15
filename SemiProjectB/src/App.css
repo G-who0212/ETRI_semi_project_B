@@ -1,25 +1,81 @@
+/*Layer */
 .LayerToggle{
   border: 1px solid black;;
-  margin-left: 5px;
-  width:200px;
-  height:500px;
+  margin-left: 100px;
+  width: 200px;;
+  height:700px;
   padding-left: 5px;
 }
 
+.LayerToggle details{
+  cursor: pointer;
+}
 
 
-.LayerToggle button{
-  background-color: green;
+.LayerToggle details summary::marker{
+  display:none;
+  content:"▷" ;
+  
+}
+.LayerToggle details[open] summary::marker{
+  display:none;
+  content:"△" ;
 }
 
 .LayerToggle ul{
   list-style: none;
 }
 
-.ConvolutionLayers button{
-  background-color: orange;
+.ConvToggle li div{
+  border-radius: 6px;
+  background-color: pink;
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  padding-top: 10px;
+  margin-top: 3px;
 }
 
-.PoolingLayers button{
-  background-color: orange;
+.PoolToggle li div{
+  border-radius: 6px;
+  background-color: turquoise;
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  padding-top: 10px;
+  margin-top: 3px;
 }
+
+/* Menu*/
+.Menu nav{
+  width: 100px;
+  background-color: rgb(28, 34, 67);
+  border-right: 1px solid black;
+
+  position:fixed;
+  height: 100%;
+}
+
+.Menu ul{
+  list-style: none;
+}
+
+.Menu ul li :hover{
+  
+  background-color: white;
+  border-radius: 20px 0px 0px 20px / 20px 0px 0px 20px;
+}
+
+.Menu ul li div{
+  line-height: 50px;
+  height: 50px;
+  display:block;
+  background-color: rgb(28, 34, 67);
+}
+
+/* .Menu ul li a:visited{
+  color: white;
+} */
+
+
+
