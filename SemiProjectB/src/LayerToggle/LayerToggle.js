@@ -21,15 +21,18 @@ const LayerToggle = () => {
         <div className="LayerToggle">
             <h2>Layer</h2>
             <br/>
-            <button onClick={ConvToggle}>Convolution Layers</button>
-            {Conv && <ConvolutionLayers />}
-            <br/>
-            <button onClick={PoolToggle}>Pooling Layers</button>
-            {Pool && <PoolingLayers />}
-            <details>
-                <summary>Normalize</summary>
+            <details className='ConvToggle'>
+                <summary>Convolution Layers</summary>
                 <ul>
-                    <li>BatchNorm</li>
+                    <li><div>Conv1d</div></li>
+                    <li><div>Conv2d</div></li>
+                </ul>
+            </details>
+            <details className="PoolToggle">
+                <summary>Pooling Layers</summary>
+                <ul>
+                    <li><div>MaxPooling</div></li>
+                    <li><div>AVGPooling</div></li>
                 </ul>
             </details>
         </div>

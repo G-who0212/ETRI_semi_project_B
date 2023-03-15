@@ -1,17 +1,25 @@
+/*Layer */
 .LayerToggle{
-  border: 1px;
-  margin-left: 5px;
-  width:200px;
-  height:500px;
+  border: 1px solid black;;
+  margin-left: 100px;
+  width: 200px;;
+  height:700px;
   padding-left: 5px;
 }
 
+.LayerToggle details{
+  cursor: pointer;
+}
 
 
-.LayerToggle button{
-  background-color: white;
-  border-style:none;
-
+.LayerToggle details summary::marker{
+  display:none;
+  content:"▷" ;
+  
+}
+.LayerToggle details[open] summary::marker{
+  display:none;
+  content:"△" ;
 }
 
 .LayerToggle details summary::marker{
@@ -26,16 +34,56 @@
   list-style: none;
 }
 
-.ConvolutionLayers button{
-  filter:drop-shadow(0px 4px 4px rgba(0,0,0,0.25));
-  background-color: #F2E3DC;
+.ConvToggle li div{
   border-radius: 6px;
-  border-style: none;
+  background-color: pink;
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  padding-top: 10px;
+  margin-top: 3px;
 }
 
-.PoolingLayers button{
-  filter:drop-shadow(0px 4px 4px rgba(0,0,0,0.25));
-  background-color: #DEE8E4;
+.PoolToggle li div{
   border-radius: 6px;
-  border-style: none;
+  background-color: turquoise;
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  padding-top: 10px;
+  margin-top: 3px;
 }
+
+/* Menu*/
+.Menu nav{
+  width: 100px;
+  background-color: rgb(28, 34, 67);
+  border-right: 1px solid black;
+
+  position:fixed;
+  height: 100%;
+}
+
+.Menu ul{
+  list-style: none;
+}
+
+.Menu ul li :hover{
+  
+  background-color: white;
+  border-radius: 20px 0px 0px 20px / 20px 0px 0px 20px;
+}
+
+.Menu ul li div{
+  line-height: 50px;
+  height: 50px;
+  display:block;
+  background-color: rgb(28, 34, 67);
+}
+
+/* .Menu ul li a:visited{
+  color: white;
+} */
+
+
+
