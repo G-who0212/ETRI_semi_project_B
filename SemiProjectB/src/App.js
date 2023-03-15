@@ -5,6 +5,14 @@ import Menu from './Menu/Menu';
 
 import React,{useState} from 'react';
 
+import NodeApp from './Node/NodeApp'
+
+import ReactFlow, {
+  ReactFlowProvider,
+} from 'reactflow';
+
+
+
 function App() {
 
   const [LayerMenu, setLayerMenu] = useState(false);
@@ -15,8 +23,10 @@ function App() {
   return (
     <div>
       <Menu LayerMenuToggle={LayerMenuToggle}/>
-      {LayerMenu && <LayerToggle />}
-      
+      <ReactFlowProvider>
+        {LayerMenu && <LayerToggle />}
+        {LayerMenu && <NodeApp/>}
+      </ReactFlowProvider>
     </div>
     
   );
