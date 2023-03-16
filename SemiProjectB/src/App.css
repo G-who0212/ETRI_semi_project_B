@@ -6,6 +6,7 @@
   height:700px;
   position: fixed;
   padding-left: 5px;
+  font-weight: 700;
 }
 
 .LayerToggle details{
@@ -23,12 +24,13 @@
 }
 
 .LayerToggle ul{
+  font-weight: 700;
   list-style: none;
 }
 
 .ConvToggle li div{
   border-radius: 6px;
-  background-color: pink;
+  background-color: wheat;
   width: 100px;
   height: 30px;
   text-align: center;
@@ -38,7 +40,7 @@
 
 .PoolToggle li div{
   border-radius: 6px;
-  background-color: turquoise;
+  background-color: darkcyan;
   width: 100px;
   height: 30px;
   text-align: center;
@@ -49,7 +51,7 @@
 /* Menu*/
 .Menu nav{
   width: 100px;
-  background-color: rgb(28, 34, 67);
+  background-color: #323232;
   border-right: 1px solid black;
 
   position:fixed;
@@ -63,23 +65,21 @@
 }
 
 .Menu ul li :hover{
-  
+  color: black;
   background-color: white;
   border-radius: 20px 0px 0px 20px / 20px 0px 0px 20px;
 }
 
 .Menu ul li div{
+  color: whitesmoke;
   line-height: 50px;
   height: 50px;
   display:block;
-  background-color: rgb(28, 34, 67);
+  background-color: #323232;
 }
 
 /* .Menu ul li a:visited{
   color: white;
-<<<<<<< HEAD
-} */
-=======
 } */
 
 .dndflow {
@@ -90,7 +90,7 @@
   display: flex;
   flex-grow: 1;
   height: 702px;
-  background-color: #0041d0;
+  background-color: whitesmoke;
   width: 100%;
 }
 
@@ -147,4 +147,3 @@
 
 
 
->>>>>>> ced0f4e7351749b4ffbd50aadd547fca4631941f

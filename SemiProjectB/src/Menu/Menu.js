@@ -2,12 +2,12 @@ const Menu = ({LayerMenuToggle}) => {
     return (
         <div className="Menu">
             <nav>
-                <ul>
-                   <li><div onClick={LayerMenuToggle}>Layer</div></li>
-                   <li><a onClick={LayerMenuToggle}>Information</a></li>
-                   <li><a onClick={LayerMenuToggle}>Visualization</a></li>
-                   <li><a onClick={LayerMenuToggle}>Code</a></li>
-                </ul>
+            <div>
+                <img 
+                    src="https://icons-for-free.com/iconfiles/png/512/layers-131994967918908016.png" 
+                    width={90} 
+                    height={90}/>
+             </div>
             </nav>
         </div>
     )
