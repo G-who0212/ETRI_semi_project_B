@@ -1,11 +1,11 @@
 import Modal from '../Modal/Modal';
 
-const Footer = ({modalState,closeModal}) => {
+const Footer = ({modalState,closeModal,Props}) => {
 
     return (
         <footer>
             <h3>Layer Information</h3>
-            {modalState && <Modal closeModal={closeModal}/>}
+            {modalState && <Modal closeModal={closeModal} Props={Props}/>}
         </footer>
     )
 }

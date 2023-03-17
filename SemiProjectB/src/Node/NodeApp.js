@@ -7,20 +7,25 @@ import ReactFlow, {
   Controls,
 } from 'reactflow';
 import 'reactflow/dist/style.css';
+import Footer from '../Footer/Footer';
+import { Conv1DProps,Conv2DProps,MaxProps,AvgProps } from '../Props/defaultProps';
 
 import Sidebar from './Sidebar';
 
 import '../App.css';
 
-
+let nodeid=  0;
 let id = 0;
 const getId = () => `dndnode_${id++}`;
 
-const DnDFlow = ({toggleOpenModal}) => {
+const DnDFlow = ({toggleOpenModal,openModal,closeModal,setOpenModal}) => {
   const reactFlowWrapper = useRef(null);
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
+  const [state, setState] = useState("")
+
+  
 
   const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), []);
 
@@ -29,7 +34,10 @@ const DnDFlow = ({toggleOpenModal}) => {
     event.dataTransfer.dropEffect = 'move';
   }, []);
 
- 
+  const onNodeClick = (event, node) =>{
+    setState(node.layerName);
+    nodeid = node.id;
+  }
 
   const onDrop = useCallback(
     (event) => {
@@ -63,13 +71,50 @@ const DnDFlow = ({toggleOpenModal}) => {
         }
       };
 
+
+
       setNodes((nds) => nds.concat(newNode));
     },
     [reactFlowInstance]
   );
+
+  const SelectNode = () =>{
+    if(state === "Conv1D"){
+      return (
+        <Footer Props={Conv1DProps} modalState={openModal} closeModal={closeModal}/>
+      )
+    };
+    if(state === "Conv2D"){
+      return (
+        <Footer Props={Conv2DProps} modalState={openModal} closeModal={closeModal}/>
+      )
+    };
+    if(state === "MaxPooling"){
+      return (
+        <Footer Props={MaxProps} modalState={openModal} closeModal={closeModal}/>
+      )
+    };
+    if(state === "AVGPooling"){
+      return (
+        <Footer Props={AvgProps} modalState={openModal} closeModal={closeModal}/>
+      )
+    }
+    else
+      {
+        
+      return (
+        
+        <Footer/>
+      )
+    }
+      
+
+
+  }
   
 
   return (
+    <React.Fragment>
     <div className="dndflow">
       
         <div className="reactflow-wrapper" ref={reactFlowWrapper}>
@@ -83,13 +128,19 @@ const DnDFlow = ({toggleOpenModal}) => {
             onDrop={onDrop}
             onDragOver={onDragOver}
             onNodeDoubleClick={toggleOpenModal}
+            onNodeClick={onNodeClick}
+            
             
           >
             <Controls />
           </ReactFlow>
         </div>
-      
+        
     </div>
+    <SelectNode/>
+
+    </React.Fragment>
+    
   );
 };
 
