@@ -18,16 +18,24 @@ function App() {
     setLayerMenu(!LayerMenu);
   }
 
+  const [openModal, setOpenModal] = useState(false);
+  const toggleOpenModal = () => {
+    setOpenModal(true);
+  };
+  const closeModal=() => {
+    setOpenModal(false);
+  }
+
+
+
   return (
     <div>
       <Menu LayerMenuToggle={LayerMenuToggle}/>
       <ReactFlowProvider>
-        {/* {LayerMenu && <LayerToggle />}
-        {LayerMenu && <NodeApp/>} */}
         <LayerToggle/>
-        <NodeApp/>
+        <NodeApp toggleOpenModal={toggleOpenModal}/>
       </ReactFlowProvider>
-      <Footer />
+      <Footer modalState={openModal} closeModal={closeModal}/>
     </div>
     
   );

@@ -16,7 +16,7 @@ import '../App.css';
 let id = 0;
 const getId = () => `dndnode_${id++}`;
 
-const DnDFlow = () => {
+const DnDFlow = ({toggleOpenModal}) => {
   const reactFlowWrapper = useRef(null);
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
@@ -29,6 +29,8 @@ const DnDFlow = () => {
     event.dataTransfer.dropEffect = 'move';
   }, []);
 
+ 
+
   const onDrop = useCallback(
     (event) => {
       event.preventDefault();
@@ -36,6 +38,7 @@ const DnDFlow = () => {
       const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
       const type = event.dataTransfer.getData('application/reactflow');
       const color = event.dataTransfer.getData('colorNode');
+      const layerName  = event.dataTransfer.getData('layerName');
 
       // check if the dropped element is valid
       if (typeof type === 'undefined' || !type) {
@@ -48,6 +51,7 @@ const DnDFlow = () => {
       });
       const newNode = {
         id: getId(),
+        layerName:`${layerName}`,
         type,
         position,
         data: { label: `${type}`},
@@ -63,6 +67,7 @@ const DnDFlow = () => {
     },
     [reactFlowInstance]
   );
+  
 
   return (
     <div className="dndflow">
@@ -77,7 +82,8 @@ const DnDFlow = () => {
             onInit={setReactFlowInstance}
             onDrop={onDrop}
             onDragOver={onDragOver}
-            fitView
+            onNodeDoubleClick={toggleOpenModal}
+            
           >
             <Controls />
           </ReactFlow>
