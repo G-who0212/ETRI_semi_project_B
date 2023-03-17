@@ -172,11 +172,24 @@
 .Modal ul{
   text-align: left
 }
+.Modal li{
+  line-height: 24px;
+}
 .Modal button{
   background-color: #323232;
   color: white;
   border-radius: 8px;
+}
+.Modal .CloseButton{
+  position: fixed;
   margin-left:180px;
+  margin-bottom: 5px;
+}
+.Modal input{
+  width: 40px;
+}
+.Modal .EditButton{
+  margin-right: 187px;
   margin-bottom: 5px;
 }
 
