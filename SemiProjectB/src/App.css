@@ -48,6 +48,16 @@
   margin-top: 3px;
 }
 
+.InOutToggle li div{
+  border-radius: 6px;
+  background-color: #ffa7cb;
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  padding-top: 10px;
+  margin-top: 3px;
+}
+
 /* Menu*/
 .Menu nav{
   width: 100px;

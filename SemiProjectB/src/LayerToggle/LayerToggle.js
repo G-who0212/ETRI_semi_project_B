@@ -10,7 +10,7 @@ const LayerToggle = () => {
             <div className="LayerToggle">
                 <h2>Layer</h2>
                 <br/>
-                <details className="PoolToggle">
+                <details className="InOutToggle">
                     <summary>in/output</summary>
                     <ul>
                         <SidebarInOut/>
