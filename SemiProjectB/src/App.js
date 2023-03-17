@@ -1,8 +1,6 @@
-
 import './App.css';
 import LayerToggle from './LayerToggle/LayerToggle';
 import Menu from './Menu/Menu';
-
 import React,{useState} from 'react';
 
 import NodeApp from './Node/NodeApp'
@@ -14,7 +12,6 @@ import ReactFlow, {
 
 
 function App() {
-
   const [LayerMenu, setLayerMenu] = useState(false);
   const LayerMenuToggle = () => {
     setLayerMenu(!LayerMenu);
@@ -24,8 +21,10 @@ function App() {
     <div>
       <Menu LayerMenuToggle={LayerMenuToggle}/>
       <ReactFlowProvider>
-        {LayerMenu && <LayerToggle />}
-        {LayerMenu && <NodeApp/>}
+        {/* {LayerMenu && <LayerToggle />}
+        {LayerMenu && <NodeApp/>} */}
+        <LayerToggle/>
+        <NodeApp/>
       </ReactFlowProvider>
     </div>
     
