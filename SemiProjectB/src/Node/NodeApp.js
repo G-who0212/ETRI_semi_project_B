@@ -35,6 +35,7 @@ const DnDFlow = () => {
 
       const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
       const type = event.dataTransfer.getData('application/reactflow');
+      const color = event.dataTransfer.getData('colorNode');
 
       // check if the dropped element is valid
       if (typeof type === 'undefined' || !type) {
@@ -49,7 +50,13 @@ const DnDFlow = () => {
         id: getId(),
         type,
         position,
-        data: { label: `${type}` },
+        data: { label: `${type}`},
+        style:{
+          background: `${color}`,
+          width: 150,
+          fontSize: "20px",
+          boxShadow: "5px 5px 5px 0px rgba(0,0,0,.10)"
+        }
       };
 
       setNodes((nds) => nds.concat(newNode));

@@ -3,7 +3,8 @@ import LayerToggle from './LayerToggle/LayerToggle';
 import Menu from './Menu/Menu';
 import React,{useState} from 'react';
 
-import NodeApp from './Node/NodeApp'
+import NodeApp from './Node/NodeApp';
+import Footer from './Footer/Footer';
 
 import ReactFlow, {
   ReactFlowProvider,
@@ -26,6 +27,7 @@ function App() {
         <LayerToggle/>
         <NodeApp/>
       </ReactFlowProvider>
+      <Footer />
     </div>
     
   );
