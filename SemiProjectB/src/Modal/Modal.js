@@ -9,17 +9,23 @@ const Modal = ({closeModal,Props}) => {
     const EditMode = () =>{
         if(Edit===false){
             return (
+            <div>
             <ul>
                 <li>in_channel : {Props.in_channel}</li>
                 <li>out_channel : {Props.out_channel}</li>
                 <li>kernel_size : {Props.kernel_size}</li>
                 <li>stride : {Props.stride}</li>
                 <li>padding : {Props.padding}</li>
+                
             </ul>
+            <button className="CloseButton" onClick={closeModal}>Close</button>
+            <button className="EditButton" onClick={startEdit}>Edit</button>
+            </div>
             );
         }
         else{
             return (
+            <form>
             <ul>
                 <li>in_channel : <input type="text" value={Props.in_channel}/></li>
                 <li>out_channel : <input value={Props.out_channel}/></li>
@@ -27,6 +33,11 @@ const Modal = ({closeModal,Props}) => {
                 <li>stride : <input value={Props.stride}/></li>
                 <li>padding : <input value={Props.padding}/></li>
             </ul>
+            <button className="CloseButton" onClick={closeModal}>Close</button>
+            <button type="submit" className="EditButton" onClick={startEdit}>Save</button>
+            </form>
+            
+            
             )
         }
     }
@@ -35,10 +46,11 @@ const Modal = ({closeModal,Props}) => {
         <div className="Modal">
             <h4>{Props.layerName}</h4>
             
+            
             <EditMode/>
             
-            <button className="CloseButton" onClick={closeModal}>Close</button>
-            <button className="EditButton" onClick={startEdit}>Edit</button>
+            
+            
         </div>
     )
 }
