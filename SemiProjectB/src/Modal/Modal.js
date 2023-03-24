@@ -5,7 +5,7 @@ const Modal = ({closeModal,Props}) => {
     const [Edit,setEdit] = useState(false);
     const startEdit = () =>{
         setEdit(!Edit);
-    }    
+    }
     const EditMode = () =>{
         if(Edit===false){
             return (
@@ -16,7 +16,7 @@ const Modal = ({closeModal,Props}) => {
                 <li>kernel_size : {Props.kernel_size}</li>
                 <li>stride : {Props.stride}</li>
                 <li>padding : {Props.padding}</li>
-                
+
             </ul>
             <button className="CloseButton" onClick={closeModal}>Close</button>
             <button className="EditButton" onClick={startEdit}>Edit</button>
