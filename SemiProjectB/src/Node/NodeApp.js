@@ -10,6 +10,7 @@ import 'reactflow/dist/style.css';
 import Footer from '../Footer/Footer';
 import { Conv1DProps,Conv2DProps,MaxProps,AvgProps } from '../Props/defaultProps';
 
+import axios from 'axios';
 import Sidebar from './Sidebar';
 
 import '../App.css';
@@ -23,9 +24,23 @@ const DnDFlow = ({toggleOpenModal,openModal,closeModal,setOpenModal}) => {
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
-  const [state, setState] = useState("")
+  const [state, setState] = useState({
+    layerName:"",
+    nodeid: undefined
+  })
+  const [fetch, setFetch] = useState({
+    node_id:undefined,
+    layerName:undefined,
+    
+  })
 
-  
+  const postData = async () => {
+    await axios.post('api/node/',state)
+  }
+
+  const fetchData = async (node_id) => {
+    const request = await axios.get('/api/?node_id='+node_id)
+  }
 
   const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), []);
 
@@ -35,8 +50,12 @@ const DnDFlow = ({toggleOpenModal,openModal,closeModal,setOpenModal}) => {
   }, []);
 
   const onNodeClick = (event, node) =>{
-    setState(node.layerName);
-    nodeid = node.id;
+    setState({
+      layerName:node.layerName,
+      nodeid :node.id
+    });
+    fetchData(node.id);
+    
   }
 
   const onDrop = useCallback(
@@ -71,30 +90,33 @@ const DnDFlow = ({toggleOpenModal,openModal,closeModal,setOpenModal}) => {
         }
       };
 
-
+      console.log(newNode.id)
 
       setNodes((nds) => nds.concat(newNode));
+
+      postData()
+      
     },
     [reactFlowInstance]
   );
 
   const SelectNode = () =>{
-    if(state === "Conv1D"){
+    if(state.layerName === "Conv1D"){
       return (
         <Footer Props={Conv1DProps} modalState={openModal} closeModal={closeModal}/>
       )
     };
-    if(state === "Conv2D"){
+    if(state.layerName === "Conv2D"){
       return (
         <Footer Props={Conv2DProps} modalState={openModal} closeModal={closeModal}/>
       )
     };
-    if(state === "MaxPooling"){
+    if(state.layerName === "MaxPooling"){
       return (
         <Footer Props={MaxProps} modalState={openModal} closeModal={closeModal}/>
       )
     };
-    if(state === "AVGPooling"){
+    if(state.layerName === "AVGPooling"){
       return (
         <Footer Props={AvgProps} modalState={openModal} closeModal={closeModal}/>
       )
@@ -129,8 +151,6 @@ const DnDFlow = ({toggleOpenModal,openModal,closeModal,setOpenModal}) => {
             onDragOver={onDragOver}
             onNodeDoubleClick={toggleOpenModal}
             onNodeClick={onNodeClick}
-            
-            
           >
             <Controls />
           </ReactFlow>
