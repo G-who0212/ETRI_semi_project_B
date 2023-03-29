@@ -53,7 +53,7 @@ const DnDFlow = ({toggleOpenModal,openModal,closeModal,setOpenModal}) => {
   const onNodeClick = (event, node) =>{
 
     
-    fetchData('qwer')
+    fetchData('qwercc')
     // setnodeState(response.data);
     
     console.log(nodestate)
@@ -107,7 +107,7 @@ const DnDFlow = ({toggleOpenModal,openModal,closeModal,setOpenModal}) => {
       // });
       axios.post('http://127.0.0.1:8000/api/modal/create',{
         name:newNode.layerName,
-        node_id:'qwer'
+        node_id:'qwercc'
       })
       console.log(nodestate)
       
@@ -118,34 +118,13 @@ const DnDFlow = ({toggleOpenModal,openModal,closeModal,setOpenModal}) => {
   );
 
   const SelectNode = () =>{
-    if(nodestate.name === "Conv1D"){
-      return (
-        <Footer Props={Conv1DProps} modalState={openModal} closeModal={closeModal}/>
-      )
-    };
-    if(nodestate.name === "Conv2D"){
-      return (
-        <Footer Props={Conv2DProps} modalState={openModal} closeModal={closeModal}/>
-      )
-    };
-    if(nodestate.name === "MaxPooling"){
-      return (
-        <Footer Props={MaxProps} modalState={openModal} closeModal={closeModal}/>
-      )
-    };
-    if(nodestate.name === "AVGPooling"){
-      return (
-        <Footer Props={AvgProps} modalState={openModal} closeModal={closeModal}/>
-      )
-    }
-    else
-      {
+    
         
       return (
         
-        <Footer Props={nodestate} modalState={openModal} closeModal={closeModal}/>
+        <Footer Props={nodestate} modalState={openModal} closeModal={closeModal} setnodeState={setnodeState}/>
       )
-    }
+    
       
 
 
