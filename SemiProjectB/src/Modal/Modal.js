@@ -2,6 +2,8 @@ import React,{useState} from "react";
 
 const Modal = ({closeModal,Props}) => {
 
+
+
     const [Edit,setEdit] = useState(false);
     const startEdit = () =>{
         setEdit(!Edit);
@@ -11,6 +13,7 @@ const Modal = ({closeModal,Props}) => {
             return (
             <div>
             <ul>
+
                 <li>in_channel : {Props.in_channel}</li>
                 <li>out_channel : {Props.out_channel}</li>
                 <li>kernel_size : {Props.kernel_size}</li>
