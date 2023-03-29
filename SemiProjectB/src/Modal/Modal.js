@@ -1,12 +1,30 @@
 import React,{useState} from "react";
+import axios from 'axios';
+const Modal = ({closeModal,Props,setnodeState}) => {
 
-const Modal = ({closeModal,Props}) => {
-
-
-
+    const [newState, setnewState] = useState(Props)
+    const handleChangeState  = (e) => {
+        
+        setnewState({
+            ...newState,
+            [e.target.name]: e.target.value
+        });
+        
+        
+    }
     const [Edit,setEdit] = useState(false);
     const startEdit = () =>{
         setEdit(!Edit);
+    }
+
+    const startSumbit = (e) => {
+        
+        console.log(e)
+        
+        axios.post('http://localhost:8000/api/modal/qwercc',newState)
+        console.log(newState)
+        
+        startEdit();
     }
     const EditMode = () =>{
         if(Edit===false){
@@ -14,11 +32,11 @@ const Modal = ({closeModal,Props}) => {
             <div>
             <ul>
 
-                <li>in_channel : {Props.in_channel}</li>
-                <li>out_channel : {Props.out_channel}</li>
-                <li>kernel_size : {Props.kernel_size}</li>
-                <li>stride : {Props.stride}</li>
-                <li>padding : {Props.padding}</li>
+                <li>in_channel : {newState.in_channel}</li>
+                <li>out_channel : {newState.out_channel}</li>
+                <li>kernel_size : {newState.kernel_size}</li>
+                <li>stride : {newState.stride}</li>
+                <li>padding : {newState.padding}</li>
 
             </ul>
             <button className="CloseButton" onClick={closeModal}>Close</button>
@@ -28,17 +46,18 @@ const Modal = ({closeModal,Props}) => {
         }
         else{
             return (
-            <form>
+            
+            <div>
             <ul>
-                <li>in_channel : <input type="text" value={Props.in_channel}/></li>
-                <li>out_channel : <input value={Props.out_channel}/></li>
-                <li>kernel_size : <input value={Props.kernel_size}/></li>
-                <li>stride : <input value={Props.stride}/></li>
-                <li>padding : <input value={Props.padding}/></li>
+                <li>in_channel : <input name="in_channel" type="text" onChange={handleChangeState} placeholder={newState.in_channel}/></li>
+                <li>out_channel : <input name="out_channel" onChange={handleChangeState} placeholder={newState.out_channel}/></li>
+                <li>kernel_size : <input name="kernel_size" onChange={handleChangeState} placeholder={newState.kernel_size}/></li>
+                <li>stride : <input name="stride" onChange={handleChangeState} placeholder={newState.stride}/></li>
+                <li>padding : <input name="padding" onChange={handleChangeState} placeholder={newState.padding}/></li>
             </ul>
-            <button className="CloseButton" onClick={closeModal}>Close</button>
-            <button type="submit" className="EditButton" onClick={startEdit}>Save</button>
-            </form>
+            <button  type="button" className="CloseButton" onClick={closeModal}>Close</button>
+            <button type="submit" className="EditButton" onClick={startSumbit}>Save</button>
+            </div>
             
             
             )
