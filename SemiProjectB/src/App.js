@@ -4,7 +4,7 @@ import Menu from './Menu/Menu';
 import React,{useState} from 'react';
 
 import NodeApp from './Node/NodeApp';
-import Footer from './Footer/Footer';
+
 
 import ReactFlow, {
   ReactFlowProvider,
@@ -18,16 +18,24 @@ function App() {
     setLayerMenu(!LayerMenu);
   }
 
+  const [openModal, setOpenModal] = useState(false);
+  const toggleOpenModal = () => {
+    setOpenModal(true);
+  };
+  const closeModal=() => {
+    setOpenModal(false);
+  }
+
+
+
   return (
     <div>
       <Menu LayerMenuToggle={LayerMenuToggle}/>
       <ReactFlowProvider>
-        {/* {LayerMenu && <LayerToggle />}
-        {LayerMenu && <NodeApp/>} */}
         <LayerToggle/>
-        <NodeApp/>
+        <NodeApp openModal={openModal} setOpenModal={setOpenModal} closeModal={closeModal} toggleOpenModal={toggleOpenModal}/>
       </ReactFlowProvider>
-      <Footer />
+      
     </div>
     
   );
