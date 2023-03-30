@@ -53,7 +53,7 @@ const DnDFlow = ({toggleOpenModal,openModal,closeModal,setOpenModal}) => {
   const onNodeClick = (event, node) =>{
 
     
-    fetchData('qwercc')
+    fetchData('qweree')
     // setnodeState(response.data);
     
     console.log(nodestate)
@@ -107,7 +107,7 @@ const DnDFlow = ({toggleOpenModal,openModal,closeModal,setOpenModal}) => {
       // });
       axios.post('http://127.0.0.1:8000/api/modal/create',{
         name:newNode.layerName,
-        node_id:'qwercc'
+        node_id:'qweree'
       })
       console.log(nodestate)
       
