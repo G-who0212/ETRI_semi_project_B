@@ -1,54 +1,46 @@
-import React,{useState} from "react";
+import React,{useState,useCallback} from "react";
+import axios from 'axios';
+import NoEditModal from './noEditModal';
+import YesEditModal from "./yesEditModal";
+
 
 const Modal = ({closeModal,Props}) => {
+    console.log('new loading');
+    
+    const [newState,setnewState] = useState(Props)
 
+    const handleChangeState  = (e) => {
+        
+        setnewState({
+            ...newState,
+            [e.target.name]: e.target.value
+        })
+    
+    };
+
+   
     const [Edit,setEdit] = useState(false);
     const startEdit = () =>{
         setEdit(!Edit);
     }
-    const EditMode = () =>{
-        if(Edit===false){
-            return (
-            <div>
-            <ul>
-                <li>in_channel : {Props.in_channel}</li>
-                <li>out_channel : {Props.out_channel}</li>
-                <li>kernel_size : {Props.kernel_size}</li>
-                <li>stride : {Props.stride}</li>
-                <li>padding : {Props.padding}</li>
 
-            </ul>
-            <button className="CloseButton" onClick={closeModal}>Close</button>
-            <button className="EditButton" onClick={startEdit}>Edit</button>
-            </div>
-            );
-        }
-        else{
-            return (
-            <form>
-            <ul>
-                <li>in_channel : <input type="text" value={Props.in_channel}/></li>
-                <li>out_channel : <input value={Props.out_channel}/></li>
-                <li>kernel_size : <input value={Props.kernel_size}/></li>
-                <li>stride : <input value={Props.stride}/></li>
-                <li>padding : <input value={Props.padding}/></li>
-            </ul>
-            <button className="CloseButton" onClick={closeModal}>Close</button>
-            <button type="submit" className="EditButton" onClick={startEdit}>Save</button>
-            </form>
-            
-            
-            )
-        }
+    const startSumbit = (e) => {
+        
+        console.log(e)
+        
+        axios.post('http://localhost:8000/api/modal/qweree',newState)
+        console.log(newState)
+        
+        startEdit();
     }
 
     return (
         <div className="Modal">
-            <h4>{Props.layerName}</h4>
+            <h4>{newState.layerName}</h4>
             
-            
-            <EditMode/>
-            
+            <div>
+            {Edit?<YesEditModal newState={newState} handleChangeState={handleChangeState} closeModal={closeModal} startSumbit={startSumbit} />:<NoEditModal newState={newState} closeModal={closeModal} startEdit={startEdit}/>}
+            </div>
             
             
         </div>

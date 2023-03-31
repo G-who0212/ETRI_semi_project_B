@@ -10,6 +10,7 @@ import 'reactflow/dist/style.css';
 import Footer from '../Footer/Footer';
 import { Conv1DProps,Conv2DProps,MaxProps,AvgProps } from '../Props/defaultProps';
 
+import axios from 'axios';
 import Sidebar from './Sidebar';
 
 import '../App.css';
@@ -23,9 +24,24 @@ const DnDFlow = ({toggleOpenModal,openModal,closeModal,setOpenModal}) => {
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
-  const [state, setState] = useState("")
+  const [nodestate, setnodeState] = useState({
+    name:"",
+    node_id: ""
+  })
+  const [fetch, setFetch] = useState({
+    node_id:undefined,
+    name:undefined,
+    
+  })
 
-  
+  const postData = async (state) => {
+    await axios.post('http://127.0.0.1:8000/api/modal/create',state)
+  }
+
+  const fetchData = (node_id) => {
+    axios.get('http://127.0.0.1:8000/api/modal/'+node_id).then((e)=>{setnodeState(e.data)})
+    
+  }
 
   const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), []);
 
@@ -35,9 +51,15 @@ const DnDFlow = ({toggleOpenModal,openModal,closeModal,setOpenModal}) => {
   }, []);
 
   const onNodeClick = (event, node) =>{
-    setState(node.layerName);
-    nodeid = node.id;
+
+    
+    fetchData('qweree')
+    // setnodeState(response.data);
+    
+    console.log(nodestate)
   }
+
+  // useEffect(()=>{onNodeClick()},[]);
 
   const onDrop = useCallback(
     (event) => {
@@ -71,42 +93,38 @@ const DnDFlow = ({toggleOpenModal,openModal,closeModal,setOpenModal}) => {
         }
       };
 
-
+      console.log(newNode.id);
+      console.log(newNode.layerName)
 
       setNodes((nds) => nds.concat(newNode));
+      // setState({
+      //   name:newNode.layerName,
+      //   node_id:newNode.id
+      // });
+      // postData({
+      //   name:newNode.layerName,
+      //   node_id:newNode.id
+      // });
+      axios.post('http://127.0.0.1:8000/api/modal/create',{
+        name:newNode.layerName,
+        node_id:'qweree'
+      })
+      console.log(nodestate)
+      
+      // console.log(state);
+      
     },
     [reactFlowInstance]
   );
 
   const SelectNode = () =>{
-    if(state === "Conv1D"){
-      return (
-        <Footer Props={Conv1DProps} modalState={openModal} closeModal={closeModal}/>
-      )
-    };
-    if(state === "Conv2D"){
-      return (
-        <Footer Props={Conv2DProps} modalState={openModal} closeModal={closeModal}/>
-      )
-    };
-    if(state === "MaxPooling"){
-      return (
-        <Footer Props={MaxProps} modalState={openModal} closeModal={closeModal}/>
-      )
-    };
-    if(state === "AVGPooling"){
-      return (
-        <Footer Props={AvgProps} modalState={openModal} closeModal={closeModal}/>
-      )
-    }
-    else
-      {
+    
         
       return (
         
-        <Footer/>
+        <Footer Props={nodestate} modalState={openModal} closeModal={closeModal} setnodeState={setnodeState}/>
       )
-    }
+    
       
 
 
@@ -129,8 +147,6 @@ const DnDFlow = ({toggleOpenModal,openModal,closeModal,setOpenModal}) => {
             onDragOver={onDragOver}
             onNodeDoubleClick={toggleOpenModal}
             onNodeClick={onNodeClick}
-            
-            
           >
             <Controls />
           </ReactFlow>
