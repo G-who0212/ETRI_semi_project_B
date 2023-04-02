@@ -8,9 +8,9 @@ const NoEditModal =({newState,closeModal,startEdit}) => {
 
             <li>in_channel : {newState.in_channel}</li>
             <li>out_channel : {newState.out_channel}</li>
-            <li>kernel_size : {newState.kernel_size}</li>
-            <li>stride : {newState.stride}</li>
-            <li>padding : {newState.padding}</li>
+            <li>kernel_size : {newState.kernel_size} x {newState.kernel_size}</li>
+            <li>stride : {newState.stride} x {newState.stride}</li>
+            <li>padding : {newState.padding} x {newState.padding}</li>
 
         </ul>
         <button className="CloseButton" onClick={closeModal}>Close</button>

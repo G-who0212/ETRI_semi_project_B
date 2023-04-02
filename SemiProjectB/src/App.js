@@ -33,6 +33,7 @@ function App() {
       <Menu LayerMenuToggle={LayerMenuToggle}/>
       <ReactFlowProvider>
         <LayerToggle/>
+
         <NodeApp openModal={openModal} setOpenModal={setOpenModal} closeModal={closeModal} toggleOpenModal={toggleOpenModal}/>
       </ReactFlowProvider>
       

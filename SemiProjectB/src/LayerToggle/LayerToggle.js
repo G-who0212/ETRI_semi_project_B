@@ -8,7 +8,7 @@ const LayerToggle = () => {
     return (
         
             <div className="LayerToggle">
-                <h2>Layer</h2>
+                <h2 className="Layer">Layer</h2>
                 <br/>
                 <details className="InOutToggle">
                     <summary>in/output</summary>

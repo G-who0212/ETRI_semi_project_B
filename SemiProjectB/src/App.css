@@ -1,81 +1,89 @@
 /*Layer */
 .LayerToggle{
-  border: 1px solid black;;
-  margin-left: 100px;
-  width: 200px;;
+  margin-left: 70px;
+  width: 200px;
   height:70%;
   position: fixed;
   padding-left: 5px;
-  font-weight: 700;
+  font-weight: 400;
+  font-family: helvetica;
+  
 }
+
+.LayerToggle .Layer{
+  font-size: 25px;
+  font-weight:900;
+  margin-left:10px;
+  margin-top: 10px;
+  filter:drop-shadow(0.7px 0.7px 1px gray);
+}
+
 
 .LayerToggle details{
   cursor: pointer;
+  color:#4E5058;
 }
 
 .LayerToggle details summary::marker{
   display:none;
-  content:"▷" ;
-  
+  content:"  ▷ " ;
 }
+
 .LayerToggle details[open] summary::marker{
   display:none;
-  content:"△" ;
+  content:"  △ " ;
 }
 
 .LayerToggle details summary::marker{
   display: none;
-  content:"▽";
+  content:"  ▽ ";
+}
 
-}
-.LayerToggle details[open] summary::marker {
-  content: "△";
-}
 .LayerToggle ul{
-  font-weight: 700;
+  font-weight: 500;
   list-style: none;
 }
 
 .ConvToggle li div{
   border-radius: 6px;
-  background-color: wheat;
+  background-color: #E5E4CC;
   width: 100px;
   height: 30px;
   text-align: center;
   padding-top: 10px;
-  margin-top: 3px;
+  margin-top: 7px;
+  filter:drop-shadow(2px 2px 2px  #555555)
 }
 
 .PoolToggle li div{
   border-radius: 6px;
-  background-color: darkcyan;
+  background-color: #F2E3DC;
   width: 100px;
   height: 30px;
   text-align: center;
   padding-top: 10px;
-  margin-top: 3px;
+  margin-top: 7px;
+  filter:drop-shadow(2px 2px 2px  #555555)
 }
 
 .InOutToggle li div{
   border-radius: 6px;
-  background-color: #ffa7cb;
+  background-color: #DEE8E4;
   width: 100px;
   height: 30px;
   text-align: center;
   padding-top: 10px;
-  margin-top: 3px;
+  margin-top: 7px;
+  filter:drop-shadow(2px 2px 2px  #555555)
 }
 
 /* Menu*/
 .Menu nav{
-  width: 100px;
-  background-color: #323232;
-  border-right: 1px solid black;
-
-  position:fixed;
-  
-  height: 70%;
-  
+  width: 70px;
+  background-color: #4E5058;
+  border-right: 1px solid #4E5058;
+  position:absolute;
+  height:100%; 
 }
 
 .Menu ul{
@@ -166,7 +174,7 @@
 .Modal{
   position: absolute;
   left: 9%;
-  color: black;
+  color: #4E5058;
   width: 250px;
   background-color: white;
   border-radius: 6px;
@@ -174,7 +182,6 @@
 .Modal h4{
   border:none;
   border-bottom: 1px dotted gray;
-  
 }
 
 .Modal ul{
@@ -184,7 +191,7 @@
   line-height: 24px;
 }
 .Modal button{
-  background-color: #323232;
+  background-color: #4E5058;
   color: white;
   border-radius: 8px;
 }
@@ -205,9 +212,9 @@
 
 footer{
   width:307px;
-  background-color: #323232;
+  background-color: #4E5058;
   position:fixed;
-  margin-top: 500px;
+  margin-top:550px;
   height: 100%;
   text-align: center;
   color: white;
