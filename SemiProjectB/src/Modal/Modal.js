@@ -27,8 +27,8 @@ const Modal = ({closeModal,Props}) => {
     const startSumbit = (e) => {
         
         console.log(e)
-        
-        axios.post('http://localhost:8000/api/modal/qweree',newState)
+        console.log(e.node_id)
+        axios.post('http://localhost:8000/api/modal/'+newState.node_id,newState)
         console.log(newState)
         
         startEdit();
