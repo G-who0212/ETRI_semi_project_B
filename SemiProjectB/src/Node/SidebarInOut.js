@@ -9,10 +9,10 @@ export default () => {
 
   return (
     <div>
-      <li><div className="dndnode input" onDragStart={(event) => onDragStart(event, 'input', '#ffa7cb')} draggable>
+      <li><div className="dndnode input" onDragStart={(event) => onDragStart(event, 'input', '#DEE8E4')} draggable>
         input
       </div></li>
-      <li><div className="dndnode" onDragStart={(event) => onDragStart(event, 'output', '#ffa7cb')} draggable>
+      <li><div className="dndnode" onDragStart={(event) => onDragStart(event, 'output', '#DEE8E4')} draggable>
         output
       </div></li>
     
